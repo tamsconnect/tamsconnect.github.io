@@ -13,7 +13,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/home.jpg" width="1000" alt="TAMS Connect homepage with the student feed, clubs, and upcoming events">
+  <img src="docs/home-framed.jpg" width="1000" alt="TAMS Connect homepage with the student feed, clubs, and upcoming events">
 </p>
 
 ## Features
@@ -33,4 +33,6 @@ I built TAMS Connect with React, TypeScript, Tailwind CSS, and Vite. It’s host
 
 ## About this project
 
-TAMS Connect is an independent community project I created to share my interest in CS and my ideas for TAMS. I’m Subhas Angara, and this isn’t an official UNT or TAMS app. Club names and logos come from public Instagram accounts. All accounts, conversations, and events are fictional, and each visitor’s activity stays in their own browser.
+I'm Subhas Angara, and I created TAMS Connect as a community project to share my interest in CS and my ideas for student life at TAMS. It isn't an official UNT or TAMS app.
+
+Club names and logos come from their public Instagram profiles. All accounts, conversations, and events are fictional. Each visitor's activity is saved only in their own browser.
