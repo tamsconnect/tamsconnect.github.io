@@ -31,8 +31,10 @@ I built TAMS Connect with React, TypeScript, Tailwind CSS, and Vite. It’s host
 
 [Try TAMS Connect](https://tamsconnect.github.io/)
 
-## About this project
+## Disclaimer
 
-I'm Subhas Angara, and I created TAMS Connect as a community project to share my interest in CS and my ideas for student life at TAMS. It isn't an official UNT or TAMS app.
+TAMS Connect is an independent community project created by Subhas Angara. Not affiliated with or endorsed by UNT or TAMS.
 
-Club names and logos come from their public Instagram profiles. All accounts, conversations, and events are fictional. Each visitor's activity is saved only in their own browser.
+Club names and logos come from public Instagram profiles. All accounts, conversations, and events are fictional. Each visitor’s activity is saved only in their own browser.
+
+Created by Subhas Angara, to showcase personal interest in CS and my innovative ideas for student life at TAMS.
