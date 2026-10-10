@@ -1,6 +1,6 @@
 # Publish TAMS Connect on GitHub Pages
 
-This folder contains the complete website, already built. You do not need an API key, server, ChatGPT account, or a build service to publish it.
+This folder contains the complete website, already built. You do not need an API key, server, or build service to publish it.
 
 1. Create a GitHub repository, for example `tams-connect`. A public repository works with GitHub Pages on GitHub Free.
 2. Open the repository and choose **Add file > Upload files**. Open this folder on your computer and upload its **contents**, not the enclosing `TAMS-Connect-GitHub` folder. Include the subfolders. The repository's top level must contain `index.html`, `assets`, `brand`, and `clubs`.

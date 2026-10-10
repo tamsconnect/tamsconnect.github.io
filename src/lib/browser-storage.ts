@@ -1,4 +1,5 @@
 import { applyRequest, deliverReminders, localDay, seedWorld, syncDemoDay, type World } from './community';
+import { activateDemoMember, emptyDemoAccess, registerDemoMember, restoreDemoAccess, retireSetupSample, selectableDemoProfiles, type DemoAccess, type DemoProfileInput } from './demo-access';
 
 let opening: Promise<IDBDatabase> | undefined;
 
@@ -61,6 +62,13 @@ export async function communityRequest(options: RequestInit = {}): Promise<Respo
           }
         }
         store.put(current, 'world');
+        if (patch && requestBody.action?.type === 'switch') {
+          const session = store.get('access');
+          session.onsuccess = () => {
+            const access = session.result as DemoAccess | undefined;
+            if (access?.active) store.put({ ...access, active: current.actor }, 'access');
+          };
+        }
         response = reply(current);
       } catch (error) {
         failure = error instanceof Error ? error : new Error('Couldn’t read your saved demo.');
@@ -86,4 +94,61 @@ export async function storePhoto(file: File): Promise<string> {
     reader.onload = () => resolve(String(reader.result));
     reader.readAsDataURL(file);
   });
+}
+
+/** Profiles and entry state are saved atomically with the local demo world. No credentials are collected. */
+async function accessTransaction<T>(change: (world: World, access: DemoAccess) => { world: World; access: DemoAccess; result: T }): Promise<T> {
+  const db = await database();
+  return new Promise((resolve, reject) => {
+    const tx = db.transaction('community', 'readwrite');
+    const store = tx.objectStore('community');
+    let result: T;
+    let failure: unknown;
+    const worldRead = store.get('world');
+    const accessRead = store.get('access');
+    let completed = 0;
+    const finish = () => {
+      if (++completed !== 2) return;
+      try {
+        const world = deliverReminders(syncDemoDay((worldRead.result as World | undefined) ?? seedWorld(), localDay()));
+        const access = (accessRead.result as DemoAccess | undefined) ?? emptyDemoAccess();
+        const next = change(world, access);
+        store.put(next.world, 'world');
+        store.put(next.access, 'access');
+        result = next.result;
+      } catch (error) { failure = error; tx.abort(); }
+    };
+    worldRead.onsuccess = finish;
+    accessRead.onsuccess = finish;
+    tx.oncomplete = () => resolve(result);
+    tx.onerror = tx.onabort = () => reject(failure ?? new Error('Your browser could not save your profile. Your details are still here. Please retry.'));
+  });
+}
+
+export function readDemoAccess() {
+  return accessTransaction((world, access) => {
+    const cleaned = retireSetupSample(world, access);
+    const next = restoreDemoAccess(cleaned.world, cleaned.access);
+    return { world: cleaned.world, access: next, result: { access: next, profiles: selectableDemoProfiles(cleaned.world, next) } };
+  });
+}
+
+export function createDemoAccount(input: DemoProfileInput) {
+  const memberId = 'visitor-' + crypto.randomUUID();
+  return accessTransaction((world, access) => {
+    const next = registerDemoMember(world, input, memberId);
+    const state = { ...access, accounts: [...access.accounts, memberId], active: memberId };
+    return { world: next, access: state, result: memberId };
+  });
+}
+
+export function signInDemoAccount(memberId: string) {
+  return accessTransaction((world, access) => {
+    const next = activateDemoMember(world, access, memberId);
+    return { ...next, result: memberId };
+  });
+}
+
+export function signOutDemoAccount() {
+  return accessTransaction((world, access) => ({ world, access: { ...access, active: null }, result: true }));
 }

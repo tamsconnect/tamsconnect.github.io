@@ -16,3 +16,7 @@ Club logos and reference links come from these public club profiles. The fiction
 Inter is distributed under the SIL Open Font License. The license is retained in `fonts/OFL.txt` and `public/fonts/OFL.txt`.
 
 The vendored component styles retain their original license in `src/vendor/shadcn-tailwind-4.13.0.LICENSE.md`. Dependencies and their versions are listed in `package.json` and `package-lock.json`; each dependency retains its own upstream license. Club assets remain the property of their respective owners and are not covered by a blanket project license.
+# Login typography
+
+Montserrat is bundled locally for the sign-in and account setup screens. It is distributed under the SIL Open Font License; see `fonts/Montserrat-OFL.txt`.
+
