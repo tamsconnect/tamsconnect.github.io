@@ -1,54 +1,45 @@
-# TAMS Connect
+<p align="center">
+  <img src="brand/eagle.png" width="90" alt="TAMS Connect eagle logo">
+</p>
 
-An independent student project by **Subhas Angara**, a Class of 2029 TAMS applicant.
+<h1 align="center">TAMS Connect</h1>
 
-TAMS Connect explores how a campus-specific social platform could help TAMS students and alumni meet people, discover clubs, and turn online conversations into campus plans. It is not an official UNT TAMS application.
+<p align="center">
+  I made TAMS Connect so TAMS students and alumni could find each other, share what they're up to, and make plans in one place.
+</p>
 
-## Try the demo
+<p align="center">
+  <a href="https://tamsconnect.github.io/">Try TAMS Connect</a>
+</p>
 
-Publish the prepared website using [START-HERE.md](START-HERE.md). No installation is required for the initial GitHub Pages deployment.
+<p align="center">
+  <img src="docs/home.jpg" width="1000" alt="TAMS Connect homepage with the student feed, clubs, and upcoming events">
+</p>
 
-The demo includes:
+## Features
 
-- Student profiles, friendships, posts, comments, mentions, polls, and bookmarks.
-- Club pages, official public club logos, club walls, and leadership-based event creation.
-- A calendar that follows the visitor's computer date, RSVP, reminders, and event photo collections.
-- Messages, notifications, profile switching, saved drafts, editing, and undo for supported actions.
+- Student profiles and friend requests
+- Posts, photos, comments, @mentions, and polls
+- Club pages with their own walls
+- An event calendar with RSVP, reminders, and photo collections
+- Messages and notifications
+- Saved posts and events, drafts, editing, and undo
 
-This version runs entirely in the browser. IndexedDB stores one fictional community per browser and repository path. Separate visitors do not share posts or messages. Demo roles model permissions but are not authentication. Real student registration is not open.
+## Build
 
-## Engineering
+I used React, TypeScript, and Tailwind CSS for the interface, with Vite to build the site for GitHub Pages. The demo saves activity in the browser, so it runs without a server or API keys.
 
-React and TypeScript provide the interface. Vite builds static files. A pure community model validates actions, handles permissions and versions, and updates activity. IndexedDB transactions replace the hosted API, so saves do not require a remote server. Uploaded images are validated and stored locally. Hash routing and relative asset paths support GitHub Pages repository URLs.
-
-## Develop locally
-
-Use Node.js 22.18 or newer, or a compatible newer LTS version.
+To run it locally, use Node.js 22.18 or newer:
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open the address printed by Vite. To check and rebuild:
+Run `npm run build` to prepare the website files for publishing.
 
-```sh
-npm run typecheck
-npm test
-npm run build
-```
+## About this project
 
-The build updates `index.html`, `assets`, `brand`, `clubs`, and `fonts` at the project root. Commit those rebuilt files together with the source changes. GitHub Pages can serve them directly from `main` without an Actions workflow.
+I'm Subhas Angara, a Class of 2029 TAMS applicant. I made this project to explore an idea for student life at TAMS and show my interest in CS through something people could actually try.
 
-## Repository layout
-
-| Location | Purpose |
-| --- | --- |
-| `index.html`, `assets/` | Prepared production website |
-| `brand/`, `clubs/`, `fonts/` | Published local assets |
-| `src/` | Editable application and community model |
-| `public/` | Original assets used when rebuilding |
-| `tests/` | Community behavior tests |
-| `scripts/build.mjs` | Static export build |
-
-See [PRIVACY.md](PRIVACY.md), [ASSET-CREDITS.md](ASSET-CREDITS.md), and [VALIDATION.md](VALIDATION.md).
+I made this independently; it isn't an official UNT TAMS app. I used club names and logos from public Instagram profiles. All accounts, conversations, and events are fictional, and each visitor's activity stays in their own browser.
