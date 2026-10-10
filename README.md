@@ -5,7 +5,7 @@
 <h1 align="center">TAMS Connect</h1>
 
 <p align="center">
-  I made TAMS Connect so TAMS students and alumni could find each other, share what they're up to, and make plans in one place.
+  TAMS Connect is a social network for TAMS students and alumni to connect with friends, discover clubs, and keep up with campus life.
 </p>
 
 <p align="center">
@@ -27,19 +27,10 @@
 
 ## Build
 
-I used React, TypeScript, and Tailwind CSS for the interface, with Vite to build the site for GitHub Pages. The demo saves activity in the browser, so it runs without a server or API keys.
+I built TAMS Connect with React, TypeScript, Tailwind CSS, and Vite. It’s hosted on GitHub Pages.
 
-To run it locally, use Node.js 22.18 or newer:
-
-```sh
-npm ci
-npm run dev
-```
-
-Run `npm run build` to prepare the website files for publishing.
+[Try TAMS Connect](https://tamsconnect.github.io/)
 
 ## About this project
 
-I'm Subhas Angara, a Class of 2029 TAMS applicant. I made this project to explore an idea for student life at TAMS and show my interest in CS through something people could actually try.
-
-I made this independently; it isn't an official UNT TAMS app. I used club names and logos from public Instagram profiles. All accounts, conversations, and events are fictional, and each visitor's activity stays in their own browser.
+TAMS Connect is an independent community project I created to share my interest in CS and my ideas for TAMS. I’m Subhas Angara, and this isn’t an official UNT or TAMS app. Club names and logos come from public Instagram accounts. All accounts, conversations, and events are fictional, and each visitor’s activity stays in their own browser.
